@@ -269,7 +269,7 @@ static void applyNppSettings(const NppSettings &settings)
 static NSString *settingsPath()
 {
     // Ask the host for its plugin config directory (creates it if needed).
-    // Fall back to ~/.notepad++ if NPPM_GETPLUGINSCONFIGDIR returns empty.
+    // Fall back to ~/.nextpad++ if NPPM_GETPLUGINSCONFIGDIR returns empty.
     char buf[1024] = {};
     nppData._sendMessage(nppData._nppHandle,
                          NPPM_GETPLUGINSCONFIGDIR,
@@ -279,7 +279,7 @@ static NSString *settingsPath()
     if (buf[0] != '\0') {
         dir = [NSString stringWithUTF8String:buf];
     } else {
-        dir = [NSHomeDirectory() stringByAppendingPathComponent:@".notepad++"];
+        dir = [NSHomeDirectory() stringByAppendingPathComponent:@".nextpad++"];
         [[NSFileManager defaultManager] createDirectoryAtPath:dir
                                   withIntermediateDirectories:YES
                                                    attributes:nil
@@ -292,10 +292,10 @@ static void loadSettings()
 {
     @autoreleasepool {
         // One-shot migration from the pre-fix location
-        // (~/.notepad++/nppAutoDetectIndent.json → plugins/Config/).
+        // (~/.nextpad++/nppAutoDetectIndent.json → plugins/Config/).
         NSString *newPath = settingsPath();
         NSString *oldPath = [NSHomeDirectory() stringByAppendingPathComponent:
-                             @".notepad++/nppAutoDetectIndent.json"];
+                             @".nextpad++/nppAutoDetectIndent.json"];
         NSFileManager *fm = [NSFileManager defaultManager];
         if (![newPath isEqualToString:oldPath] &&
             [fm fileExistsAtPath:oldPath] &&

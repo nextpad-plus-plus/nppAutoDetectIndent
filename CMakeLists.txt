@@ -31,5 +31,5 @@ set_target_properties(nppAutoDetectIndent PROPERTIES
     OUTPUT_NAME "nppAutoDetectIndent"
 )
 
-set(PLUGIN_INSTALL_DIR "$ENV{HOME}/.notepad++/plugins/nppAutoDetectIndent")
+set(PLUGIN_INSTALL_DIR "$ENV{HOME}/.nextpad++/plugins/nppAutoDetectIndent")
 install(TARGETS nppAutoDetectIndent DESTINATION "${PLUGIN_INSTALL_DIR}")
